@@ -1,11 +1,8 @@
 package com.hrms.test.utils;
 
 
-import org.apache.commons.configuration2.Configuration;
-import org.apache.commons.configuration2.builder.fluent.Configurations;
-import org.apache.commons.configuration2.ex.ConfigurationException;
 
-import java.io.InputStream;
+
 import java.util.Properties;
 
 public class AppConfig {

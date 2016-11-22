@@ -1,15 +1,13 @@
 package com.hrms.test.stepdef;
 
+import com.hrms.test.utils.AppConfig;
 import com.hrms.test.utils.Hooks;
-import com.hrms.test.utils.WebDriverUtil;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
@@ -23,7 +21,7 @@ public class HrmsEssProfileTest {
     @Given("^I am logged in as an employee$")
     public void given_I_am_logged_in_as_an_employee() {
         driver = Hooks.driver;
-        driver.navigate().to("https://intense-brushlands-38197.herokuapp.com");
+        driver.navigate().to(AppConfig.APP_START_URL);
 
         driver.manage().timeouts().pageLoadTimeout(40, TimeUnit.SECONDS);
         driver.findElement(By.id("username")).sendKeys("rahul");
@@ -38,7 +36,7 @@ public class HrmsEssProfileTest {
     public void I_am_in_the_hrms_login_screen()
     {
         driver = Hooks.driver;
-        driver.navigate().to("https://hrmsdemo.herokuapp.com/#!/login");
+        driver.navigate().to(AppConfig.APP_START_URL);
     }
 
 
@@ -54,13 +52,7 @@ public class HrmsEssProfileTest {
     @Then("^login should be successful$")
     public void validateRelogin() {
         driver = Hooks.driver;
-
-        if (driver.findElement(By.xpath("/html/body/div[2]/div/div/div[2]/div/div/div/h2")).isDisplayed()){
-            System.out.println("Test 1 Pass");
-        } else {
-            System.out.println("Test 1 Fail");
-        }
-
+        Assert.assertEquals("Welcome to Employee Self Services",driver.findElement(By.xpath("/html/body/div[2]/div/div/div[2]/div/div/div/h2")).getText());
     }
     @Then("^I close the browser$")
     public void i_close_the_browser()
