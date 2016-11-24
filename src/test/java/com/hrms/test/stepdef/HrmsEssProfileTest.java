@@ -2,9 +2,11 @@ package com.hrms.test.stepdef;
 
 import com.hrms.test.utils.AppConfig;
 import com.hrms.test.utils.Hooks;
+import com.hrms.test.utils.WebDriverUtil;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -36,27 +38,33 @@ public class HrmsEssProfileTest {
         driver.navigate().to(AppConfig.APP_START_URL);
     }
 
-
     @When(value = "^I enter Username as \"([^\"]*)\" and Password as \"([^\"]*)\" and click on the login button$")
     public void I_enter_Username_as_and_Password_as(String username, String password) {
-
         driver = Hooks.driver;
         driver.findElement(By.id("username")).sendKeys(username);
         driver.findElement(By.id("password")).sendKeys(password);
         driver.findElement(By.id("login")).click();
     }
 
-    @Then("^login should be successful$")
-    public void login_should_be_successful() {
-        if (driver.getPageSource().contains("Text-Welcome to Employee Self Services")) {
-            System.out.println("Text is present");
-        } else {
-            System.out.println("Text not present");
-        }
-    @When(value = "^I click on \"([^\\\"]+)\"$/ do |text|$")
-            public void I_click_on_string(){
-            driver.findElement(By.id("ess_profile")).click();
+    @Then(value="^I am greeted to the welcome employee selfservice page$")
+    public void I_am_greeted_to_ess_page() {
+      //  Assert.assertTrue(driver.getPageSource().contains("Welcome to Employee Self Services"));
+        WebDriverUtil.waitExplicitlyFor(driver,By.xpath("/html/body/div[2]/div/div/div[2]/div/div/div/h2"),1,2);
+        Assert.assertTrue(driver.findElement(By.xpath("/html/body/div[2]/div/div/div[2]/div/div/div/h2")).getText().equals("Welcome to Employee Self Services"));
 
-        }
+    }
+    @When(value = "^I click on Profile link on the side menu bar$")
+    public void I_cick_on_profile_link()
+    {
+        driver = Hooks.driver;
+        driver.findElement(By.id("ess_profile")).click();
 
-        }
+    }
+
+    @Then(value="^I am in the Employee Profile Page$")
+    public void I_am_empl_profile_page() {
+        WebDriverUtil.waitExplicitlyFor(driver,By.xpath("/html/body/div[2]/div/div/div[2]/div/div/div[1]/h2"),1,3);
+        Assert.assertTrue(driver.getPageSource().contains("View My Profile"));
+    }
+
+}
