@@ -11,6 +11,7 @@ public class AppConfig {
     public static String DRIVER_PATH;
     public static String APP_START_URL;
 
+
     static {
         try {
             Properties properties = new Properties();
@@ -19,6 +20,7 @@ public class AppConfig {
             BROWSER=properties.getProperty("browser");
             DRIVER_PATH=properties.getProperty("driverpath");
             APP_START_URL=properties.getProperty("appstarturl");
+
 
         } catch (Exception e) {
             System.err.println("Unable to read configuration");

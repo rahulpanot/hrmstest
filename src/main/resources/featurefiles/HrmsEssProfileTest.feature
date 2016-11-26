@@ -11,7 +11,7 @@ Feature: Test HrmsEssProfileTest
 Examples:
     |username|password|
     |rahul|rahul|
- #   |xxx|xxx|
+    |xxx|xxx|
 
 
 

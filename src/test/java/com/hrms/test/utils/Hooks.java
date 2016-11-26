@@ -14,6 +14,7 @@ import java.util.concurrent.TimeUnit;
 public class Hooks {
 
     public static WebDriver driver;
+
     @Before
     public void setUpScenario(Scenario scenario) throws Exception
     {
@@ -22,8 +23,10 @@ public class Hooks {
         {
             case "chrome":
                 System.setProperty("webdriver.chrome.driver", AppConfig.DRIVER_PATH+ File.separator+"chromedriver.exe");
-                driver = new ChromeDriver();
-                driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+                ChromeDriver chromeDriver = new ChromeDriver();
+                chromeDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+                driver=chromeDriver;
                 break;
             case "firefox":
                 System.setProperty("webdriver.gecko.driver", AppConfig.DRIVER_PATH+ File.separator+"geckodriver.exe");
