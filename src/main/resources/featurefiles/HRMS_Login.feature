@@ -15,29 +15,35 @@ Feature: Login Functionality.
 
 
   Scenario: Successful Login of an employee
+    Given A user launches the HRMS Appplication
     Given A user login to HRMS application with username <"rahul"> and password <"rahul">
     Then The user is directed to the Employee Self Service Page
     And A Welcome, <"rahul"> text is present in the right top corner of the navigation bar.
+    And The view selection menu is selected with <"Employee Self Service"> in the navigation bar.
 
   Scenario: Successful Login of a manager
-    Given A user login to HRMS application with username <"username"> and password <"password">
+    Given A user launches the HRMS Appplication
+    Given A user login to HRMS application with username <"rahulsmanager"> and password <"rahulsmanager">
     Then The user is directed to the Employee Self Service Page
-    And A Welcome, <"username"> text is present in the right top corner of the navigation bar.
+    And A Welcome, <"rahulsmanager"> text is present in the right top corner of the navigation bar.
+    And The view selection menu is selected with <"Employee Self Service"> in the navigation bar.
 
 
   Scenario: UnSuccessful Login when using a unknown user id
-    Given A user login to HRMS application with username <"username"> and password <"password">
+    Given A user launches the HRMS Appplication
+    Given A user login to HRMS application with username <"xxxx"> and password <"yyyy">
     Then The user is directed to the login screen
     And The navigation Bar is empty except for the HRMS brand text.
-    And The following error messages is displayed in the screen
-    |"Unknown user"|
+    And The following error message is displayed in the screen
+    |Unknown user|
 
-  Scenario: UnSuccessful Login when using a unknown user id
-    Given A user login to HRMS application with username <"username"> and password <"password">
+  Scenario: UnSuccessful Login when using a known user id but wrong password
+    Given A user launches the HRMS Appplication
+    Given A user login to HRMS application with username <"rahul"> and password <"xxx">
     Then The user is directed to the login screen
     And The navigation Bar is empty except for the HRMS brand text.
-    And The following error messages is displayed in the screen
-      |"Unknown user"|
+    And The following error message is displayed in the screen
+    |Bad Credentials. Your username password combination is invalid|
 
 
 
