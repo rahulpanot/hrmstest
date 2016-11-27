@@ -26,12 +26,14 @@ public class HrmsLogin {
         this.driver = Hooks.driver;
     }
 
-    @Given("^A user login to HRMS application with username <\"([^\"]*)\"> and password <\"([^\"]*)\">$")
-    public void aUserLoginToHRMSApplicationWithUsernameAndPassword(String username, String password){
+    @Given("^A user attempts to login to HRMS application with username <\"([^\"]*)\"> and password <\"([^\"]*)\">$")
+    public void aUserAttempsToLoginToHRMSApplicationWithUsernameAndPassword(String username, String password){
         driver.findElement(By.id("username")).sendKeys(username);
         driver.findElement(By.id("password")).sendKeys(password);
         driver.findElement(By.id("login")).click();
     }
+
+
 
     @Then("^The user is directed to the Employee Self Service Page$")
     public void theUserIsDirectedToTheEmployeeSelfServicePage(){
@@ -109,5 +111,12 @@ public class HrmsLogin {
     public void theNavigationBarDoesNotShowWelcomeUserNameAndViewMenu() {
         Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"usermenu\"]")).getText().trim().equals(""));
         Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"switchviewmenu\"]")).getText().trim().equals(""));
+    }
+
+    @Given("^A user completes login to the HRMS application with username <\"([^\"]*)\"> and password <\"([^\"]*)\">$")
+    public void aUserCompletesLoginToTheHRMSApplicationWithUsernameAndPassword(String username, String password) {
+        aUserLaunchesTheHRMSAppplication();
+        aUserAttempsToLoginToHRMSApplicationWithUsernameAndPassword(username,password);
+        theUserIsDirectedToTheEmployeeSelfServicePage();
     }
 }

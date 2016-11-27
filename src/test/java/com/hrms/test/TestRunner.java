@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         plugin = {"pretty", "html:target/cucumber"},
-        features = "D:\\Development\\testing\\hrmstest\\src\\main\\resources\\featurefiles\\HrmsEssProfile.feature"
+        features = "D:\\development\\hrmstest\\src\\main\\resources\\featurefiles"
 )
 public class TestRunner {
 }
