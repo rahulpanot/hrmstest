@@ -18,9 +18,15 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by rahul on 11/16/2016.
  */
-public class HrmsEssProfileTest {
+public class HrmsEssProfile {
 
-    WebDriver driver = null;
+    WebDriver driver;
+
+    public HrmsEssProfile() {
+        this.driver = Hooks.driver;
+    }
+
+
 
     @Given("^I am logged in as an employee$")
     public void given_I_am_logged_in_as_an_employee() {

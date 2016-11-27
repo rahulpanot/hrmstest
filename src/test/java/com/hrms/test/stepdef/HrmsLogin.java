@@ -18,14 +18,11 @@ import org.openqa.selenium.WebDriver;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * Created by Sivan on 27/11/2016.
- */
-public class HRMSLogin {
+public class HrmsLogin {
 
     private WebDriver driver;
 
-    public HRMSLogin() {
+    public HrmsLogin() {
         this.driver = Hooks.driver;
     }
 
@@ -92,23 +89,6 @@ public class HRMSLogin {
         Assert.assertTrue(driver.findElement(By.id("login")).isDisplayed());
     }
 
-    @And("^The navigation Bar is empty except for the HRMS brand text.$")
-    public void theNavigationBarIsEmptyExceptForTheHRMSBrandText() throws Throwable {
-        //verify usermenu does not appear
-        Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"usermenu\"]")).getText().trim().equals(""));
-        //verify viewmenu does not appear
-        Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"switchviewmenu\"]")).getText().trim().equals(""));
-    }
-
-//    @And("^The following error messages is displayed in the screen$")
-//    public void theFollowingErrorMessageIsDisplayedInTheScreen(List<String> expectederroMsgs) {
-//
-//      //  List<String> expectederroMsgs = errors.asList(String.class);
-//        expectederroMsgs.size();
-////        String error = driver.findElement(By.id("errors")).getText();
-////        List<String> actualErrors = Arrays.asList(error.split("\\r"));
-//
-//    }
 
     @And("^The view selection menu is selected with <\"([^\"]*)\"> in the navigation bar.$")
     public void theViewSelectionMenuIsSelectedWithInTheNavigationBar(String defaultedText) {
@@ -123,5 +103,11 @@ public class HRMSLogin {
 
         Assert.assertTrue("Expected Error messages "+expectederroMsgs+" did not equal actual "+actualErrors,
                 expectederroMsgs.equals(actualErrors));
+    }
+
+    @And("^The navigation Bar does not show welcome user name and view menu.$")
+    public void theNavigationBarDoesNotShowWelcomeUserNameAndViewMenu() {
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"usermenu\"]")).getText().trim().equals(""));
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"switchviewmenu\"]")).getText().trim().equals(""));
     }
 }
