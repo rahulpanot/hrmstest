@@ -1,20 +1,14 @@
 package com.hrms.test.stepdef;
 
-import com.hrms.test.utils.AppConfig;
 import com.hrms.test.utils.Hooks;
 import com.hrms.test.utils.WebDriverUtil;
-
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-
-import java.util.concurrent.TimeUnit;
 
 
 /**
@@ -54,55 +48,62 @@ public class HrmsEssProfile {
 
 
 
-    @Given("^A user completes login to the HRMS application with username \"([^\"]*)\" and password \"([^\"]*)\"$")
-    public void aUserCompletesLoginToTheHRMSApplicationWithUsernameAndPassword(String arg0, String arg1) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
-    }
 
     @Then("^The uid label and the value \"([^\"]*)\" is displayed$")
     public void theUidLabelAndTheValueIsDisplayed(String username) {
-
-        // TODO: 27/11/2016  for Rahul to implement
+        Assert.assertTrue(driver.findElement(By.xpath("/html/body/div[2]/div/div/div[2]/div/div/div[2]/div/div/div/div[1]/div[1]")).getText().equals("uid:"));
+        WebDriverUtil.checkWithWaitIfElementTextValueIs(driver,By.xpath("/html/body/div[2]/div/div/div[2]/div/div/div[2]/div/div/div/div[1]/div[2]"),username);
     }
 
     @And("^The First Name label and the value \"([^\"]*)\" is displayed$")
     public void theFirstNameLabelAndTheValueIsDisplayed(String firstname)
     {
-        // TODO: 27/11/2016  for Rahul to implement
+        Assert.assertTrue(driver.findElement(By.xpath("/html/body/div[2]/div/div/div[2]/div/div/div[2]/div/div/div/div[2]/div[1]")).getText().equals("firstname:"));
+        WebDriverUtil.checkWithWaitIfElementTextValueIs(driver,By.xpath("/html/body/div[2]/div/div/div[2]/div/div/div[2]/div/div/div/div[2]/div[2]"),firstname);
     }
 
     @And("^The Last Name label and the value \"([^\"]*)\" is displayed$")
-    public void theLastNameLabelAndTheValueIsDisplayed(String lastname)
+    public void theLastNameLabelAndTheValueIsDisplayed(String Lastname)
     {
-        // TODO: 27/11/2016  for Rahul to implement
+        Assert.assertTrue(driver.findElement(By.xpath("/html/body/div[2]/div/div/div[2]/div/div/div[2]/div/div/div/div[3]/div[1]")).getText().equals("lastname:"));
+        WebDriverUtil.checkWithWaitIfElementTextValueIs(driver,By.xpath("/html/body/div[2]/div/div/div[2]/div/div/div[2]/div/div/div/div[3]/div[2]"),Lastname);
     }
 
     @And("^The Email label and the value \"([^\"]*)\" is displayed$")
     public void theEmailLabelAndTheValueIsDisplayed(String email)
     {
-        // TODO: 27/11/2016  for Rahul to implement
+        Assert.assertTrue(driver.findElement(By.xpath("/html/body/div[2]/div/div/div[2]/div/div/div[2]/div/div/div/div[4]/div[1]")).getText().equals("email:"));
+        WebDriverUtil.checkWithWaitIfElementTextValueIs(driver,By.xpath("/html/body/div[2]/div/div/div[2]/div/div/div[2]/div/div/div/div[4]/div[2]"),email);
     }
+
 
     @And("^The Address label is displayed$")
-    public void theAddressLabelIsDisplayed(){
-        // TODO: 27/11/2016  for Rahul to implement
+    public void theAddressLabelIsDisplayed()
+    {
+       Assert.assertTrue(driver.findElement(By.xpath("/html/body/div[2]/div/div/div[2]/div/div/div[2]/div/div/div/div[5]/div[1]")).getText().equals("Adress:"));
     }
 
+
+
+
     @And("^The value for Address Line One is displayed as \"([^\"]*)\"$")
-    public void theValueForAddressLineOneIsDisplayedAs(String addressline1)  {
-        // TODO: 27/11/2016  for Rahul to implement
+    public void theValueForAddressLineOneIsDisplayedAs(String addressline1)
+    {
+
+        WebDriverUtil.checkWithWaitIfElementTextValueIs(driver,By.xpath("/html/body/div[2]/div/div/div[2]/div/div/div[2]/div/div/div/div[5]/div[2]"),addressline1);
     }
 
     @And("^The value for Address Line Two is displayed as \"([^\"]*)\"$")
-    public void theValueForAddressLineTwoIsDisplayedAs(String adressline2)
+    public void theValueForAddressLineTwoIsDisplayedAs(String addressline2)
     {
-        // TODO: 27/11/2016  for Rahul to implement
+        Assert.assertTrue(driver.findElement(By.xpath("/html/body/div[2]/div/div/div[2]/div/div/div[2]/div/div/div/div[6]")).getText().equals("addressline2:"));
+        WebDriverUtil.checkWithWaitIfElementTextValueIs(driver,By.xpath("/html/body/div[2]/div/div/div[2]/div/div/div[2]/div/div/div/div[6]/div[2]"),addressline2);
     }
 
     @And("^The value for Address Line Three is displayed as \"([^\"]*)\"$")
     public void theValueForAddressLineThreeIsDisplayedAs(String addressline3)
     {
-        // TODO: 27/11/2016  for Rahul to implement
+        Assert.assertTrue(driver.findElement(By.xpath("/html/body/div[2]/div/div/div[2]/div/div/div[2]/div/div/div/div[7]")).getText().equals("addressline3:"));
+        WebDriverUtil.checkWithWaitIfElementTextValueIs(driver,By.xpath("/html/body/div[2]/div/div/div[2]/div/div/div[2]/div/div/div/div[7]/div[2]"),addressline3);
     }
 }

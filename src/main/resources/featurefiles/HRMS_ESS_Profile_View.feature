@@ -1,8 +1,9 @@
 Feature: View My Profile functionality
-  As the user navigates to the Profile Scree, the users profile details must be displayed. This consists of the user name, First Name, Last Name, Email Address and Address Details.
+  As the user navigates to the Profile Screen, the users profile details must be displayed.
+  This consists of the user name, First Name, Last Name, Email Address and Address Details.
 
   Scenario: When the user clicks on the profile link, the user is directed to view my profile page.
-    Given A user completes login to the HRMS application with username "<rahul>" and password "<rahul>"
+    Given A user completes login to the HRMS application with username <"rahul"> and password <"rahul">
     When The user clicks on the profile link from the side bar menu
     Then The user is directed to View My Profile Page.
 
@@ -20,7 +21,7 @@ Feature: View My Profile functionality
     Examples:
     |username|password|firstname|lastname|email|addressline1|addressline2|addressline3|
     |rahul   |rahul   |Rahul    |Panot   |rahul@test.com|Tetgs|Test Address Line 2|Test Address Line 3|
-    |rahulsmanager|rahulsmanager|TBD|TBD |TBD           |TBD  |TBD                |TBD                |
+    |rahulsmanager|rahulsmanager|RahulsManager|RahulsManagerLastName |rahulmanager@test.com|Test Address Line1|Test Address Line2|Test Address Line3|
 
 
 

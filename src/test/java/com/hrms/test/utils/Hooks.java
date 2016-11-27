@@ -25,8 +25,8 @@ public class Hooks {
                 System.setProperty("webdriver.chrome.driver", AppConfig.DRIVER_PATH+ File.separator+"chromedriver.exe");
                 ChromeDriver chromeDriver = new ChromeDriver();
                 chromeDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
                 driver=chromeDriver;
+                driver.manage().window().maximize();
                 break;
             case "firefox":
                 System.setProperty("webdriver.gecko.driver", AppConfig.DRIVER_PATH+ File.separator+"geckodriver.exe");
