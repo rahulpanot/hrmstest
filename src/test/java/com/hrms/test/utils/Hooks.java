@@ -4,6 +4,8 @@ package com.hrms.test.utils;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -42,6 +44,13 @@ public class Hooks {
     @After
     public void finishScenario(Scenario scenario)
     {
+        if (scenario.isFailed()) {
+            // Take a screenshot...
+            final byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+            scenario.embed(screenshot, "image/png"); // ... and embed it in the report.
+        }
+
+
         if(driver!=null)
             driver.quit();
     }
