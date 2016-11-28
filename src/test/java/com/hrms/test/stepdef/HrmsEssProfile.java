@@ -19,6 +19,7 @@ public class HrmsEssProfile {
     WebDriver driver;
     HrmsLogin hrmsLogin;
 
+
     public HrmsEssProfile(HrmsLogin hrmsLogin) {
         this.driver = Hooks.driver;
         this.hrmsLogin= hrmsLogin;
@@ -58,21 +59,21 @@ public class HrmsEssProfile {
     @And("^The First Name label and the value \"([^\"]*)\" is displayed$")
     public void theFirstNameLabelAndTheValueIsDisplayed(String firstname)
     {
-        Assert.assertTrue(driver.findElement(By.xpath("/html/body/div[2]/div/div/div[2]/div/div/div[2]/div/div/div/div[2]/div[1]")).getText().equals("firstname:"));
+        Assert.assertTrue(driver.findElement(By.xpath("/html/body/div[2]/div/div/div[2]/div/div/div[2]/div/div/div/div[2]/div[1]")).getText().equals("First Name:"));
         WebDriverUtil.checkWithWaitIfElementTextValueIs(driver,By.xpath("/html/body/div[2]/div/div/div[2]/div/div/div[2]/div/div/div/div[2]/div[2]"),firstname);
     }
 
     @And("^The Last Name label and the value \"([^\"]*)\" is displayed$")
     public void theLastNameLabelAndTheValueIsDisplayed(String Lastname)
     {
-        Assert.assertTrue(driver.findElement(By.xpath("/html/body/div[2]/div/div/div[2]/div/div/div[2]/div/div/div/div[3]/div[1]")).getText().equals("lastname:"));
+        Assert.assertTrue(driver.findElement(By.xpath("/html/body/div[2]/div/div/div[2]/div/div/div[2]/div/div/div/div[3]/div[1]")).getText().equals("Last Name:"));
         WebDriverUtil.checkWithWaitIfElementTextValueIs(driver,By.xpath("/html/body/div[2]/div/div/div[2]/div/div/div[2]/div/div/div/div[3]/div[2]"),Lastname);
     }
 
     @And("^The Email label and the value \"([^\"]*)\" is displayed$")
     public void theEmailLabelAndTheValueIsDisplayed(String email)
     {
-        Assert.assertTrue(driver.findElement(By.xpath("/html/body/div[2]/div/div/div[2]/div/div/div[2]/div/div/div/div[4]/div[1]")).getText().equals("email:"));
+        Assert.assertTrue(driver.findElement(By.xpath("/html/body/div[2]/div/div/div[2]/div/div/div[2]/div/div/div/div[4]/div[1]")).getText().equals("Email:"));
         WebDriverUtil.checkWithWaitIfElementTextValueIs(driver,By.xpath("/html/body/div[2]/div/div/div[2]/div/div/div[2]/div/div/div/div[4]/div[2]"),email);
     }
 
@@ -96,14 +97,12 @@ public class HrmsEssProfile {
     @And("^The value for Address Line Two is displayed as \"([^\"]*)\"$")
     public void theValueForAddressLineTwoIsDisplayedAs(String addressline2)
     {
-        Assert.assertTrue(driver.findElement(By.xpath("/html/body/div[2]/div/div/div[2]/div/div/div[2]/div/div/div/div[6]")).getText().equals("addressline2:"));
         WebDriverUtil.checkWithWaitIfElementTextValueIs(driver,By.xpath("/html/body/div[2]/div/div/div[2]/div/div/div[2]/div/div/div/div[6]/div[2]"),addressline2);
     }
 
     @And("^The value for Address Line Three is displayed as \"([^\"]*)\"$")
     public void theValueForAddressLineThreeIsDisplayedAs(String addressline3)
     {
-        Assert.assertTrue(driver.findElement(By.xpath("/html/body/div[2]/div/div/div[2]/div/div/div[2]/div/div/div/div[7]")).getText().equals("addressline3:"));
         WebDriverUtil.checkWithWaitIfElementTextValueIs(driver,By.xpath("/html/body/div[2]/div/div/div[2]/div/div/div[2]/div/div/div/div[7]/div[2]"),addressline3);
     }
 }
